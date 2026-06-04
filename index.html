@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<!--
+  ============================================================================
+  lsh55454.github.io  —  MAIN / LANDING SITE
+  ----------------------------------------------------------------------------
+  This page features your MAIN toy services (expense tracker, etc.).
+  Secondary work (algorithm solutions, small utilities) lives at:
+      https://lsh55454.github.io/showcase_repos/
+
+  HOW TO EDIT THE FEATURED PROJECTS:
+    Each card is marked with <!-- FEATURED CARD -->. Cards tagged TODO are
+    PLACEHOLDERS — replace the title, description, tags, and the two links
+    (Live demo / Source). Delete cards you don't need, copy one to add more.
+  ============================================================================
+-->
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seunghyeon Lee | Projects</title>
+  <meta name="description" content="Toy services and projects by Seunghyeon Lee (lsh55454).">
+  <style>
+    :root { --transition: 0.3s ease; }
+    [data-theme="dark"] { --bg-primary:#0d1117; --bg-secondary:#161b22; --bg-card:#1c2128; --bg-card-hover:#22272e; --border:#30363d; --text-primary:#e6edf3; --text-secondary:#8b949e; --text-muted:#6e7681; --accent:#58a6ff; --accent-hover:#79b8ff; --accent-subtle:rgba(88,166,255,0.1); --green:#3fb950; --shadow:0 3px 12px rgba(0,0,0,0.4); }
+    [data-theme="light"] { --bg-primary:#f6f8fa; --bg-secondary:#ffffff; --bg-card:#ffffff; --bg-card-hover:#f3f4f6; --border:#d0d7de; --text-primary:#1f2328; --text-secondary:#656d76; --text-muted:#8b949e; --accent:#0969da; --accent-hover:#0550ae; --accent-subtle:rgba(9,105,218,0.08); --green:#1a7f37; --shadow:0 3px 12px rgba(0,0,0,0.08); }
+    *,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+    body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; background:var(--bg-primary); color:var(--text-primary); line-height:1.6; transition:background var(--transition),color var(--transition); min-height:100vh; }
+    a { color:var(--accent); text-decoration:none; transition:color var(--transition); }
+    a:hover { color:var(--accent-hover); text-decoration:underline; }
+    .container { max-width:1000px; margin:0 auto; padding:0 24px; }
+    .navbar { background:var(--bg-secondary); border-bottom:1px solid var(--border); padding:12px 0; position:sticky; top:0; z-index:100; backdrop-filter:blur(12px); }
+    .navbar .container { display:flex; align-items:center; justify-content:space-between; }
+    .navbar-brand { display:flex; align-items:center; gap:10px; font-weight:600; font-size:18px; color:var(--text-primary); }
+    .navbar-brand svg { fill:var(--text-primary); }
+    .nav-links { display:flex; align-items:center; gap:8px; }
+    .nav-links a { padding:6px 14px; border-radius:6px; font-size:14px; color:var(--text-secondary); transition:all var(--transition); }
+    .nav-links a:hover,.nav-links a.active { background:var(--accent-subtle); color:var(--accent); text-decoration:none; }
+    .theme-toggle { background:none; border:1px solid var(--border); border-radius:6px; padding:6px 10px; cursor:pointer; color:var(--text-secondary); font-size:18px; transition:all var(--transition); display:flex; align-items:center; }
+    .theme-toggle:hover { border-color:var(--accent); color:var(--accent); }
+    .hero { padding:56px 0 32px; display:flex; align-items:center; gap:32px; }
+    .avatar { width:128px; height:128px; border-radius:50%; border:3px solid var(--border); transition:transform 0.4s ease,border-color 0.3s ease; flex-shrink:0; }
+    .avatar:hover { transform:scale(1.05); border-color:var(--accent); }
+    .hero-info h1 { font-size:30px; font-weight:700; margin-bottom:4px; }
+    .hero-info .username { font-size:17px; color:var(--text-secondary); margin-bottom:10px; }
+    .hero-info .bio { color:var(--text-secondary); margin-bottom:18px; font-size:15px; max-width:560px; }
+    .hero-links { display:flex; gap:10px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; gap:7px; padding:8px 16px; border-radius:6px; font-size:14px; font-weight:500; border:1px solid var(--border); background:var(--bg-secondary); color:var(--text-primary); cursor:pointer; transition:all var(--transition); }
+    .btn:hover { border-color:var(--accent); color:var(--accent); text-decoration:none; }
+    .btn-primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+    .btn-primary:hover { background:var(--accent-hover); border-color:var(--accent-hover); color:#fff; }
+    .section-header { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; padding:24px 0 8px; border-bottom:1px solid var(--border); margin-bottom:28px; }
+    .section-title { font-size:21px; font-weight:600; }
+    .section-header .sub { font-size:14px; color:var(--text-muted); }
+    .projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:18px; padding-bottom:40px; }
+    .project-card { background:var(--bg-card); border:1px solid var(--border); border-radius:10px; padding:22px 24px; transition:all var(--transition); display:flex; flex-direction:column; }
+    .project-card:hover { border-color:var(--accent); box-shadow:var(--shadow); transform:translateY(-3px); }
+    .project-card.todo { border-style:dashed; }
+    .project-title { font-size:18px; font-weight:600; color:var(--text-primary); margin-bottom:8px; display:flex; align-items:center; gap:8px; }
+    .badge-todo { font-size:10px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--accent); background:var(--accent-subtle); padding:2px 7px; border-radius:10px; }
+    .project-desc { color:var(--text-secondary); font-size:14px; margin-bottom:14px; flex:1; }
+    .project-tags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:16px; }
+    .tag { background:var(--accent-subtle); color:var(--accent); font-size:12px; padding:2px 10px; border-radius:12px; font-weight:500; }
+    .project-actions { display:flex; gap:10px; flex-wrap:wrap; }
+    .project-actions .btn { padding:6px 13px; font-size:13px; }
+    .footer { border-top:1px solid var(--border); padding:28px 0; text-align:center; color:var(--text-muted); font-size:13px; }
+    .footer a { color:var(--text-secondary); }
+    @media (max-width:680px) { .hero { flex-direction:column; text-align:center; padding:40px 0 24px; } .hero-links { justify-content:center; } .nav-links a span { display:none; } }
+  </style>
+</head>
+<body>
+  <nav class="navbar"><div class="container">
+    <a href="#" class="navbar-brand"><svg height="24" width="24" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>lsh55454</a>
+    <div class="nav-links">
+      <a href="#projects" class="active">Projects</a>
+      <!-- Cross-link to the secondary "all repositories" site -->
+      <a href="https://lsh55454.github.io/showcase_repos/">All Repositories &#8594;</a>
+      <button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme"><span id="theme-icon">&#9728;</span></button>
+    </div>
+  </div></nav>
+
+  <section class="container"><div class="hero">
+    <img class="avatar" src="https://avatars.githubusercontent.com/u/78131190?v=4" alt="Seunghyeon Lee">
+    <div class="hero-info">
+      <h1>Seunghyeon Lee</h1>
+      <div class="username">@lsh55454</div>
+      <div class="bio">Developer &amp; Problem Solver. Below are my main toy services &mdash; small apps I built to scratch a real itch. For algorithm solutions and smaller utilities, see <a href="https://lsh55454.github.io/showcase_repos/">all repositories</a>.</div>
+      <div class="hero-links">
+        <a class="btn btn-primary" href="#projects">View projects</a>
+        <a class="btn" href="https://github.com/lsh55454" target="_blank" rel="noopener noreferrer">GitHub profile</a>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="container" id="projects">
+    <div class="section-header">
+      <div class="section-title">Featured Projects</div>
+      <div class="sub">Main toy services &middot; cards marked TODO are placeholders to fill in</div>
+    </div>
+    <div class="projects-grid">
+
+      <!-- FEATURED CARD — TODO: replace with your real Expense Tracker details -->
+      <div class="project-card todo">
+        <div class="project-title">Expense Tracker <span class="badge-todo">TODO</span></div>
+        <div class="project-desc">Placeholder. Describe what the expense tracker does, the problem it solves, and the stack you used. Then set the two links below.</div>
+        <div class="project-tags"><span class="tag">add stack</span><span class="tag">add tag</span></div>
+        <div class="project-actions">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">Live demo</a>
+          <a class="btn" href="#" target="_blank" rel="noopener noreferrer">Source</a>
+        </div>
+      </div>
+
+      <!-- FEATURED CARD — real repo (edit description/links as you like) -->
+      <div class="project-card">
+        <div class="project-title">Read Book List</div>
+        <div class="project-desc">A web app to track books you've read. <span style="color:var(--text-muted)">(TODO: confirm/expand this description and add a live demo URL if deployed.)</span></div>
+        <div class="project-tags"><span class="tag">TypeScript</span><span class="tag">Web</span></div>
+        <div class="project-actions">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">Live demo</a>
+          <a class="btn" href="https://github.com/lsh55454/read-book-list-web" target="_blank" rel="noopener noreferrer">Source</a>
+        </div>
+      </div>
+
+      <!-- FEATURED CARD — real repo (edit description/links as you like) -->
+      <div class="project-card">
+        <div class="project-title">Time Zone Converter</div>
+        <div class="project-desc">A Python GUI time-zone converter, originally built to schedule a Spanish class across time zones. <span style="color:var(--text-muted)">(Desktop GUI &mdash; no web demo.)</span></div>
+        <div class="project-tags"><span class="tag">Python</span><span class="tag">GUI</span></div>
+        <div class="project-actions">
+          <a class="btn" href="https://github.com/lsh55454/timezoneconverter" target="_blank" rel="noopener noreferrer">Source</a>
+        </div>
+      </div>
+
+      <!-- FEATURED CARD — TODO: copy this card to add another main service -->
+      <div class="project-card todo">
+        <div class="project-title">Your Next Service <span class="badge-todo">TODO</span></div>
+        <div class="project-desc">Placeholder. Copy this card block to add more featured services, or delete it.</div>
+        <div class="project-tags"><span class="tag">add tag</span></div>
+        <div class="project-actions">
+          <a class="btn btn-primary" href="#" target="_blank" rel="noopener noreferrer">Live demo</a>
+          <a class="btn" href="#" target="_blank" rel="noopener noreferrer">Source</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer"><div class="container">
+    &copy; <span id="year"></span> Seunghyeon Lee &middot;
+    <a href="https://github.com/lsh55454" target="_blank" rel="noopener noreferrer">GitHub</a> &middot;
+    <a href="https://lsh55454.github.io/showcase_repos/">All repositories</a>
+  </div></footer>
+
+  <script>
+    function toggleTheme(){const h=document.documentElement,c=h.getAttribute('data-theme'),n=c==='dark'?'light':'dark';h.setAttribute('data-theme',n);localStorage.setItem('theme',n);document.getElementById('theme-icon').textContent=n==='dark'?'☀':'☾';}
+    (function(){const s=localStorage.getItem('theme');if(s){document.documentElement.setAttribute('data-theme',s);document.getElementById('theme-icon').textContent=s==='dark'?'☀':'☾';}})();
+    document.getElementById('year').textContent=new Date().getFullYear();
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(link=>{link.addEventListener('click',e=>{const t=document.querySelector(link.getAttribute('href'));if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}});});
+  </script>
+</body>
+</html>
